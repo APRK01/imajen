@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  /* Tailwind 4 Color Mapping */
+  --color-primary: #1a1a1a;
+  --color-primary-foreground: #f9fafb;
+  --color-secondary: #f3f4f6;
+  --color-muted: #f3f4f6;
+  --color-muted-foreground: #6b7280;
+  --color-accent: #f3f4f6;
+  --color-background: #f9fafb;
+  --color-foreground: #1a1a1a;
+  --color-border: #e5e7eb;
+  
+  /* Custom Spatial Tokens */
+  --color-spatial-white: #ffffff;
+  --color-spatial-cloud: #f9fafb;
+  
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  
+  --shadow-spatial: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 15px -3px rgba(0, 0, 0, 0.02);
+  --shadow-spatial-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+}
+
+:root {
+  --glass-blur: blur(20px);
+  --glass-border: rgba(255, 255, 255, 0.8);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    @apply antialiased;
+  }
+}
+
+@layer utilities {
+  .glass {
+    backdrop-filter: var(--glass-blur);
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--glass-border);
+  }
+  
+  .soft-shadow {
+    box-shadow: var(--shadow-spatial);
+  }
+  
+  .soft-shadow-hover {
+    box-shadow: var(--shadow-spatial-hover);
+  }
+  
+  .skeuo-depress {
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Shimmer Infrastructure */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}
